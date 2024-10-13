@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .upload-box {
+            border: 2px dashed #888;
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px auto;
+            width: 50%;
+        }
+        .upload-box input[type="file"] {
+            margin-top: 20px;
+        }
+        .results {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+        .snake-info {
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: #555;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+            display: inline-block;  /* Make it inline-block for better alignment */
+            width: 70%;  /* Adjust width as needed */
+        }
+    </style>
+</head>
+<body>
+    <h1>Snake Species Classifier</h1>
+    <p>Upload an image of a snake, and we'll classify its species.</p>
+
+    <div class="upload-box">
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <br>
+            <input type="submit" value="Upload and Classify">
+        </form>
+    </div>
+
+    <div class="results">
+        {% if prediction %}
+            <h3>Classification Result:</h3>
+            <p>The snake in the image is: <strong>{{ prediction }}</strong></p>
+            <p>Confidence Score: <strong>{{ confidence }}%</strong></p>
+        {% endif %}
+        {% if image_data %}
+            <img src="data:image/png;base64,{{ image_data }}" alt="Uploaded Snake Image">
+        {% endif %}
+    </div>
+
+    {% if snake_details %}
+    <div class="snake-info">
+        <h3>Information about {{ snake_details.description.split()[0] }}:</h3>
+        <p><strong>Description:</strong> {{ snake_details.description }}</p>
+        <p><strong>Habitat:</strong> {{ snake_details.habitat }}</p>
+        <p><strong>Diet:</strong> {{ snake_details.diet }}</p>
+        <p><strong>Venomous:</strong> {{ snake_details.venomous }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
