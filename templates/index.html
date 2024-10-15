@@ -39,6 +39,9 @@
             text-decoration: none;
             color: #007bff;
         }
+        .species-list {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +57,40 @@
                 <button type="submit" class="btn btn-success btn-lg">Classify Image</button>
             </div>
         </form>
+
+        <!-- Button to trigger modal to show species list -->
+        <div class="text-center mt-4">
+            <button type="button" class="btn btn-info btn-lg" data-bs-toggle="modal" data-bs-target="#speciesModal">
+                Show All Species
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal for showing species list -->
+    <div class="modal fade" id="speciesModal" tabindex="-1" aria-labelledby="speciesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="speciesModalLabel">Species That Can Be Classified</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="species-list">
+                        <li>Branded Krait</li>
+                        <li>Golden Tree Snake</li>
+                        <li>King Cobra</li>
+                        <li>Kukri Snake</li>
+                        <li>Long-nosed Whip Snake</li>
+                        <li>Reticulated Python</li>
+                        <li>Siamese Russell's Viper</li>
+                        <!-- Add more species if needed -->
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
